@@ -90,4 +90,51 @@ describe('Testes da classe Utilitarios', () => {
         expect(numero).toBeGreaterThanOrEqual(0);
         expect(numero).toBeLessThan(100);
     });
+
+    test("verifica se é um numero", async () => {
+        expect(utilitarios.ehNumero(1)).toBeTruthy();
+    });
+
+    test("remove espaços da string", async () => {
+        expect(utilitarios.removerEspacos(" teste ")).toStrictEqual("teste");
+    });
+
+    test("repete string determinadas vezes", async () => {
+        expect(utilitarios.repetirTexto("teste", 3)).toBe("testetesteteste");
+    });
+
+    test("juntar o array", async () => {
+        utilitario = new Array(10, 20, 30, 40, 50)
+        expect(utilitarios.juntarArray(utilitario)).toBe("10,20,30,40,50");
+    });
+
+    test("conta palavras da string", async () => {
+        expect(utilitarios.contarPalavras(" teste contar palavras")).toBe(3);
+    });
+
+    test("achar a média do array", async () => {
+        utilitario = new Array(10, 20, 30, 40, 50)
+        expect(utilitarios.mediaArray(utilitario)).toBe(30);
+    });
+
+    test("remove valores duplicados do array", () => {
+        const entrada = [1, 2, 2, 3, 4, 4, 5];
+        const resultado = utilitarios.removerDuplicados(entrada);
+        expect(resultado).toStrictEqual([1, 2, 3, 4, 5]);
+      });
+
+    test("retorna true para um palíndromo simples", () => {
+        expect(utilitarios.ehPalindromo("arara")).toBeTruthy();
+    });
+            
+    test("retorna false para strings que não são palíndromos", () => {
+            expect(utilitarios.ehPalindromo("banana")).toBe(false);
+    });
+
+    test("mescla dois objetos com chaves distintas", () => {
+        const obj1 = { a: 1, b: 2 };
+        const obj2 = { c: 3, d: 4 };
+        expect(utilitarios.mesclarObjetos(obj1, obj2)).toStrictEqual({ a: 1, b: 2, c: 3, d: 4 });
+    });
+        
 });
